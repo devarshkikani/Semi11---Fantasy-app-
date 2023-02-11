@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:semi11/constant/default_images.dart';
+import 'package:semi11/constant/sizedbox.dart';
 import 'package:semi11/theme/colors.dart';
 import 'package:semi11/theme/text_style.dart';
 import 'package:semi11/screens/kabbadi/kabbadi_screen_controller.dart';
@@ -44,7 +46,7 @@ class KabbadiScreen extends GetView<KabbadiScreenController> {
                   child: tabDecoration('Live'),
                 ),
                 Tab(
-                  child: tabDecoration('Result'),
+                  child: tabDecoration('Completed'),
                 ),
               ],
             ),
@@ -52,9 +54,9 @@ class KabbadiScreen extends GetView<KabbadiScreenController> {
         ),
         body: TabBarView(
           children: <Widget>[
-            upcomingMatch(),
-            upcomingMatch(),
-            upcomingMatch(),
+            upcomingMatch(5),
+            upcomingMatch(0),
+            upcomingMatch(0),
           ],
         ),
       ),
@@ -75,52 +77,127 @@ class KabbadiScreen extends GetView<KabbadiScreenController> {
     );
   }
 
-  Widget upcomingMatch() {
-    return listOfUpcomingList();
-  }
-
-  Widget listOfUpcomingList() {
-    return ListView.builder(
-      itemCount: 10,
-      itemBuilder: (BuildContext context, int index) {
-        return Container(
-          height: 100,
-          width: 10,
-          margin: const EdgeInsets.only(
-            bottom: 20,
-          ),
-          decoration: BoxDecoration(
-            color: whiteColor,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  const Text(
-                    'Indian T20 league',
+  Widget upcomingMatch(int length) {
+    return length == 0
+        ? Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const <Widget>[
+                Center(
+                  child: Text(
+                    '''You haven't joined any contests that completed recently Join contests for any of upcoming matches.''',
+                    textAlign: TextAlign.center,
                   ),
-                  const Text(
-                    'VS',
+                ),
+              ],
+            ),
+          )
+        : ListView.builder(
+            itemCount: length,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15,
+            ),
+            itemBuilder: (BuildContext context, int index) {
+              return Container(
+                width: 10,
+                margin: const EdgeInsets.only(
+                  bottom: 20,
+                ),
+                decoration: BoxDecoration(
+                  color: whiteColor,
+                  border: Border.all(
+                    color: secondary.withOpacity(0.2),
                   ),
-                  Container(
-                    height: 10,
-                    decoration: const BoxDecoration(
-                      color: primary,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        topRight: Radius.circular(10),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          height5,
+                          Text(
+                            'Indian T20 league',
+                            style: lightText12,
+                          ),
+                          const Divider(),
+                        ],
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        );
-      },
-    );
+                    Container(
+                      // color: error,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Image.asset(
+                            stallionsLogo,
+                            height: 50,
+                            width: 50,
+                          ),
+                          const Text(
+                            'VS',
+                          ),
+                          Image.asset(
+                            stallionsLogo,
+                            height: 50,
+                            width: 50,
+                          ),
+                        ],
+                      ),
+                    ),
+                    height5,
+                    Container(
+                      height: 40,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                      ),
+                      decoration: BoxDecoration(
+                        color: secondary.withOpacity(0.2),
+                        borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(10),
+                          bottomRight: Radius.circular(10),
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            '₹50 Lakhs',
+                            style: lightText14,
+                          ),
+                          Container(
+                            height: 25,
+                            width: 130,
+                            margin: const EdgeInsets.symmetric(vertical: 0),
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: primary,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Text(
+                              '13 Apr',
+                              style: lightText12.copyWith(
+                                color: whiteColor,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            '100 Spots',
+                            style: lightText12,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
   }
 }

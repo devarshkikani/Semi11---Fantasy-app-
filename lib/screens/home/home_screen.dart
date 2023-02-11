@@ -26,20 +26,21 @@ class HomeScreen extends GetView<HomeScreenController> {
               padding: const EdgeInsets.only(left: 10),
               child: Image.asset(
                 hamburgerMenu,
-                color: dark,
+                color: light,
               ),
             ),
           ),
           title: Text(
             'Semi 11',
-            style: mediumText20.copyWith(
-              color: primary,
+            style: mediumText24.copyWith(
+              color: light,
+              fontFamily: 'source_serif_pro',
             ),
           ),
           actions: <Widget>[
             const Icon(
               Icons.notifications_sharp,
-              color: secondary,
+              color: light,
             ),
             width10,
             const CircleAvatar(

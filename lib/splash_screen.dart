@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
         splash: Image.asset(
           appLogoTransparent,
         ),
-        nextScreen: const SignUpScreen(),
+        nextScreen: const WelcomeScreen(),
         //   nextScreen: GetBuilder<HomeScreenController>(
         //     init: HomeScreenController(),
         //     builder: (_) => HomeScreen(),

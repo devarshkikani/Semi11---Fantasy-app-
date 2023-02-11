@@ -16,7 +16,7 @@ class Semi11App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       navigatorKey: navigatorKey,
       theme: ThemeData(
-        fontFamily: 'Nunito-Black',
+        fontFamily: 'nunito',
         primaryColor: primary,
         colorScheme: const ColorScheme(
           brightness: Brightness.light,

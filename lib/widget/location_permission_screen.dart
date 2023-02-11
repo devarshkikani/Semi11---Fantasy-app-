@@ -75,7 +75,7 @@
 //                 ),
 //                 height10,
 //                 Text(
-//                   '''Location services permission is required to suggest you matches nearby.''',
+//'''Location services permission is required to suggest you matches nearby.''',
 //                   style: lightText14,
 //                   textAlign: TextAlign.center,
 //                 ),
@@ -93,7 +93,7 @@
 //                     TextButton(
 //                       style: TextButton.styleFrom(
 //                         shape: const RoundedRectangleBorder(
-//                           borderRadius: BorderRadius.all(Radius.circular(12)),
+//    borderRadius: BorderRadius.all(Radius.circular(12)),
 //                         ),
 //                         maximumSize: Size(Get.width / 2, 50),
 //                       ),
